@@ -7,9 +7,9 @@
 
 /* Custom colors */
 @theme {
-  --color-bento-bg: #0A0E0E;
-  --color-bento-border: #151C1C;
-  --color-text-muted: #7C7C7C;
+  --color-bento-bg: #0a0e0e;
+  --color-bento-border: #151c1c;
+  --color-text-muted: #7c7c7c;
 }
 
 @theme inline {
@@ -20,11 +20,14 @@
   --font-roboto: var(--font-roboto);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-sf:
+    -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #060B0B;
+    --background: #060b0b;
     --foreground: #ededed;
   }
 }
@@ -36,10 +39,8 @@ body {
 }
 
 .hello {
-  @apply absolute italic font-black tracking-wider bg-clip-text;
+  @apply bg-clip-text font-black tracking-wider;
   font-family: var(--font-inter), sans-serif;
-
-  /* identical to box height */
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.2) 10%,
@@ -47,7 +48,7 @@ body {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Bento card hover effects */
@@ -74,7 +75,7 @@ body {
 .card::before,
 .card::after {
   border-radius: inherit;
-  content: '';
+  content: "";
   height: 100%;
   left: 0;
   opacity: 0;
