@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Montserrat, Inter, Roboto } from "next/font/google";
 import "./globals.css";
+import WipNotification from "@/components/WipNotification";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -41,11 +42,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${montserrat.variable} ${inter.variable} ${roboto.variable} ${geistSans.variable} ${geistMono.variable} antialiased font-montserrat`}
       >
         {children}
+        <WipNotification />
       </body>
     </html>
   );
