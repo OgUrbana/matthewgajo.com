@@ -6,6 +6,7 @@ import TwitterCard from "./bento/TwitterCard";
 import TypingCard from "./bento/TypingCard";
 import SpotifyCard from "./bento/SpotifyCard";
 import CuriousCard from "./bento/CuriousCard";
+import VSCodeCard from "./bento/VSCodeCard";
 
 export default function Bento() {
   useEffect(() => {
@@ -34,10 +35,13 @@ export default function Bento() {
   }, []);
 
   return (
-    <section className="bg-background relative mx-auto min-h-screen max-w-7xl px-6 py-16">
+    <section className="bg-background relative mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-16">
       <div className="mx-auto max-w-[1512px]">
         {/* Bento Grid Layout */}
-        <div id="bento" className="grid auto-rows-auto grid-cols-11 gap-5">
+        <div
+          id="bento"
+          className="grid auto-rows-auto grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-11"
+        >
           {/* Twitter Card - spans 3 columns on large screens */}
           <motion.div
             layout
@@ -49,7 +53,7 @@ export default function Bento() {
               delay: 0,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="lg:col-span-3 lg:col-start-1 lg:row-span-3"
+            className="min-h-[300px] md:col-span-1 lg:col-span-3 lg:col-start-1 lg:row-span-3"
           >
             <TwitterCard />
           </motion.div>
@@ -65,7 +69,7 @@ export default function Bento() {
               delay: 0.1,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="lg:col-span-4 lg:col-start-4 lg:row-span-3"
+            className="min-h-[300px] md:col-span-1 lg:col-span-4 lg:col-start-4 lg:row-span-3"
           >
             <TypingCard />
           </motion.div>
@@ -81,12 +85,12 @@ export default function Bento() {
               delay: 0.2,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="lg:col-span-4 lg:col-start-8 lg:row-span-2"
+            className="max-h-[250px] md:col-span-2 lg:col-span-4 lg:col-start-8 lg:row-span-2"
           >
             <SpotifyCard />
           </motion.div>
 
-          {/* Bottom left large card */}
+          {/* VSCode Card - Bottom left large card */}
           <motion.div
             layout
             initial={{ opacity: 0, y: 50 }}
@@ -97,9 +101,9 @@ export default function Bento() {
               delay: 0.3,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="lg:col-span-7 lg:col-start-1 lg:row-span-4 lg:row-start-4"
+            className="min-h-[400px] md:col-span-2 lg:col-span-7 lg:col-start-1 lg:row-span-4 lg:row-start-4"
           >
-            <SpotifyCard />
+            <VSCodeCard />
           </motion.div>
 
           {/* Bottom right tall card */}
@@ -113,7 +117,7 @@ export default function Bento() {
               delay: 0.4,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="lg:col-span-4 lg:col-start-8 lg:row-span-5 lg:row-start-3"
+            className="min-h-[400px] md:col-span-2 lg:col-span-4 lg:col-start-8 lg:row-span-5 lg:row-start-3"
           >
             <CuriousCard />
           </motion.div>

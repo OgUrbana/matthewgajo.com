@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import BentoCard from "./BentoCard";
-import { ArrowRight } from "../icons.tsx/ArrowRight";
+import { ArrowRight } from "../Icons";
 
 export default function CuriousCard() {
   const [question, setQuestion] = useState("");

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function TwitterCard() {
   return (
     <BentoCard className="h-full">
-      <div className="flex flex-col">
+      <div className="flex h-full flex-col">
         <div className="flex items-center gap-1.5 mb-7">
           <Image
             src="/memoji.png"
@@ -19,7 +19,7 @@ export default function TwitterCard() {
             <p className="text-text-muted text-sm leading-3">@matthewgajo</p>
           </div>
         </div>
-        <p className="pb-12">
+        <p className="flex-1 pb-8">
           &ldquo;I like to call it R&D instead of &lsquo;i have no idea what
           i&rsquo;m doing!&rsquo;&rdquo;
         </p>
@@ -27,7 +27,7 @@ export default function TwitterCard() {
           href="https://x.com/matthewgajo"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full text-center py-2.5 font-medium border border-[#162323] rounded-full"
+          className="mt-auto block w-full rounded-full border border-[#162323] py-3 text-center font-medium"
         >
           Read mid tweets
         </Link>
