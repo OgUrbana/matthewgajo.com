@@ -1,9 +1,10 @@
 import * as motion from "motion/react-client";
 
 import BentoCard from './bento/BentoCard';
+import Iphone from './projects/Iphone';
 import Macbook from './projects/Macbook';
 import ProjectShowcase from './projects/ProjectShowcase';
-import DebloatPreview from './projects/debloat/DebloatPreview';
+import DebloatPreview from './projects/DebloatPreview';
 
 export default function Projects() {
   return (
@@ -31,7 +32,9 @@ export default function Projects() {
             href="https://apps.apple.com/us/app/debloat-buddy/id6743240732"
             tiltClassName="md:translate-x-15 md:-rotate-z-15 group-hover:translate-x-0 group-hover:rotate-z-0"
           >
-            <DebloatPreview className="h-[90%]" />
+            <Iphone className="h-[90%]">
+              <DebloatPreview />
+            </Iphone>
           </ProjectShowcase>
         </motion.div>
         <motion.div

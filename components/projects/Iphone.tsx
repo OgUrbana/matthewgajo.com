@@ -1,10 +1,11 @@
 import { cn } from "@/lib/utils";
 interface IphoneProps {
-  image: string;
+  image?: string;
+  children?: React.ReactNode;
   className?: string;
 }
 
-export default function Iphone({ image, className }: IphoneProps) {
+export default function Iphone({ image, children, className }: IphoneProps) {
   return (
     <svg
       width="441"
@@ -121,14 +122,22 @@ export default function Iphone({ image, className }: IphoneProps) {
         </linearGradient>
       </defs>
       <g clipPath="url(#iphone-screen-clip)">
-        <image
-          x="10"
-          y="7"
-          width="421"
-          height="884"
-          href={image}
-          preserveAspectRatio="xMidYMid slice"
-        />
+        {image ? (
+          <image
+            x="10"
+            y="7"
+            width="421"
+            height="884"
+            href={image}
+            preserveAspectRatio="xMidYMid slice"
+          />
+        ) : children ? (
+          <foreignObject x="10" y="7" width="421" height="884">
+            <div style={{ width: "100%", height: "100%", overflow: "hidden" }}>
+              {children}
+            </div>
+          </foreignObject>
+        ) : null}
       </g>
       <path
         d="M70 3.5H371C406.07 3.5 434.5 31.9299 434.5 67V831C434.5 866.07 406.07 894.5 371 894.5H70C34.9299 894.5 6.5 866.07 6.5 831V67C6.5 31.9299 34.9299 3.5 70 3.5Z"
