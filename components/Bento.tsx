@@ -35,7 +35,7 @@ export default function Bento() {
   }, []);
 
   return (
-    <section className="bg-background relative mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-16">
+    <section className="relative mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-16">
       <div className="mx-auto max-w-[1512px]">
         {/* Bento Grid Layout */}
         <div

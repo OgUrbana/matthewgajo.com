@@ -1,5 +1,7 @@
 import * as motion from "motion/react-client";
+
 import AnimatedHello from "./hero/AnimatedHello";
+import { Spotlight } from "@/components/ui/spotlight-new";
 
 const parentVariant = {
   hidden: { opacity: 0 },
@@ -21,7 +23,8 @@ const childVariants = {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-visible">
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
+      <Spotlight />
       <AnimatedHello />
       <motion.div
         variants={parentVariant}

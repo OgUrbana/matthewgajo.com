@@ -32,15 +32,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matthew Gajo",
+  metadataBase: new URL('https://matthewgajo.com'),
+  title: "Matthew Gajo - Software Engineer",
   description:
     "Builder at heart — constantly learning, solving, and shipping meaningful solutions.",
   openGraph: {
     images: ["/Hero.png"],
   },
   twitter: {
+    title: 'Matthew Gajo - Software Engineer',
+    creator: '@matthewgajo',
+    description:
+      "Builder at heart — constantly learning, solving, and shipping meaningful solutions.",
     card: "summary_large_image",
-    images: ["/Hero.png"],
+    images: ["https://matthewgajo.com/Hero.png"],
   },
 };
 

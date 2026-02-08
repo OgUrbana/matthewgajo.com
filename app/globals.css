@@ -5,8 +5,8 @@
 
 /* Custom colors */
 @theme {
-  --color-bento-bg: #0a0e0e;
-  --color-bento-border: #151c1c;
+  --color-bento-bg: #080b0b; /*#0a0e0e*/
+  --color-bento-border: #0f1313; /*#151c1c*/
   --color-text-muted: #7c7c7c;
 }
 
@@ -95,6 +95,11 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+.card.project-showcase-borderless {
+  border-color: transparent;
+  transition: border-color 320ms ease-in-out;
 }
 
 .card::before,
@@ -207,6 +212,18 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+
+/* Caret blink for typing test (TypeRacer) */
+@keyframes caretBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 @layer base {

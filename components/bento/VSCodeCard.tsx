@@ -16,9 +16,9 @@ import {
 export default function VSCodeCard() {
   return (
     <div className="card relative h-full w-full overflow-hidden rounded-xl">
-      <div className="relative z-10 h-full w-full overflow-hidden rounded-[10px] bg-[#080F0F]">
+      <div className="relative z-10 h-full w-full overflow-hidden rounded-[10px] bg-[#070c0c]">
         {/* Top Bar with macOS controls */}
-        <div className="flex h-6 w-full items-center bg-[#141C1C] px-3">
+        <div className="flex h-6 w-full items-center bg-[#0c1414] px-3">
           <div className="flex gap-2">
             <div className="h-3 w-3 rounded-full bg-[#EF414C]" />
             <div className="h-3 w-3 rounded-full bg-[#F7AE2D]" />
@@ -28,7 +28,7 @@ export default function VSCodeCard() {
 
         <div className="flex h-[calc(100%-24px)]">
           {/* Left Sidebar */}
-          <div className="flex w-10 flex-col items-center justify-between bg-[#141C1C] py-2">
+          <div className="flex w-10 flex-col items-center justify-between bg-[#0c1414] py-2">
             {/* Top Icons */}
             <div className="flex flex-col items-center gap-5">
               <Files className="h-6 w-6 text-[#6D6D6D]" />
@@ -48,7 +48,7 @@ export default function VSCodeCard() {
           {/* Main Content Area */}
           <div className="flex-1">
             {/* Tab Bar */}
-            <div className="flex h-10 items-center bg-[#0E1414]">
+            <div className="flex h-10 items-center bg-[#0b0f0f]">
               <div className="flex items-center gap-2 border-t border-[#108781] bg-[#080F0F] px-3 py-2">
                 <VSCode className="h-4 w-4" />
                 <span className="text-sm text-white italic">
