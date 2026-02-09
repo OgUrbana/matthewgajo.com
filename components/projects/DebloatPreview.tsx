@@ -1,7 +1,5 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { createPortal } from "react-dom";
 import {
   ChatBubbleOvalLeftIcon,
   ChevronRightIcon,
@@ -11,6 +9,7 @@ import {
   CameraIcon,
   BookOpenIcon,
 } from "@heroicons/react/24/outline";
+import CustomCursorZone from "@/components/ui/CustomCursorZone";
 
 const DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"] as const;
 const PROMPTS = [
@@ -20,58 +19,13 @@ const PROMPTS = [
 ] as const;
 
 export default function DebloatPreview() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-  const [isInside, setIsInside] = useState(false);
-  const [isPressed, setIsPressed] = useState(false);
 
-  const onMouseEnter = useCallback(() => setIsInside(true), []);
-  const onMouseLeave = useCallback(() => {
-    setIsInside(false);
-    setIsPressed(false);
-  }, []);
-  const onMouseMove = useCallback((e: React.MouseEvent) => {
-    setCursor({ x: e.clientX, y: e.clientY });
-  }, []);
-  const onMouseDown = useCallback(() => setIsPressed(true), []);
-  const onMouseUp = useCallback(() => setIsPressed(false), []);
-
-  const customCursor = typeof document !== "undefined" && createPortal(
-    <div
-      aria-hidden
-      className="pointer-events-none fixed transition-opacity duration-200"
-      style={{
-        left: cursor.x,
-        top: cursor.y,
-        opacity: isInside ? 1 : 0,
-        transform: "translate(-50%, -50%)",
-        zIndex: 9999,
-      }}
-    >
-      <div
-        className="h-5 w-5 rounded-full transition-transform duration-150 ease-out"
-        style={{
-          background: "rgba(120, 120, 120, 0.35)",
-          transform: isPressed ? "scale(0.82)" : "scale(1)",
-        }}
-      />
-    </div>,
-    document.body
-  );
 
   return (
-    <>
-      {customCursor}
+    <CustomCursorZone size={20}>
       <div
         className="flex h-full w-full flex-col overflow-hidden bg-white"
-        style={{
-          fontFamily: "system-ui, -apple-system, sans-serif",
-          cursor: isInside ? "none" : undefined,
-        }}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseMove={onMouseMove}
-        onMouseDown={onMouseDown}
-        onMouseUp={onMouseUp}
+        style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
       >
         {/* Spacer for dynamic island / status bar */}
         <div className="h-[58px] shrink-0" />
@@ -176,7 +130,7 @@ export default function DebloatPreview() {
           <Cog6ToothIcon className="h-6 w-6 text-[#daaa9c]" />
         </div>
       </div>
-    </>
+    </CustomCursorZone>
   );
 }
 

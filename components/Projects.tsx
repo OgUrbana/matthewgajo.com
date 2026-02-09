@@ -1,6 +1,5 @@
 import * as motion from "motion/react-client";
 
-import BentoCard from './bento/BentoCard';
 import Iphone from './projects/Iphone';
 import Macbook from './projects/Macbook';
 import ProjectShowcase from './projects/ProjectShowcase';
@@ -46,13 +45,22 @@ export default function Projects() {
             delay: 0.2,
             ease: [0.25, 0.1, 0.25, 1],
           }}
-          className="md:col-span-9 flex flex-col min-h-0"
+          className="group md:col-span-9 flex flex-col min-h-0"
         >
-          <BentoCard className="flex-1 min-h-0 flex flex-col overflow-hidden">
-            <div className="flex-1 min-h-0 flex items-center justify-center">
-              <Macbook image="/macplaceholder.png" />
+          <ProjectShowcase
+            title="Hipnode - Developer Forum"
+            emoji="🧑‍💻"
+            tiltClassName="md:-md:rotate-z-15"
+          >
+            <div className="flex-1 min-h-0 flex items-center justify-center h-full">
+              <Macbook
+                className="h-[90%]"
+                image="/hipnodedark.png"
+                imageFit="contain"
+                url="hipnode.com"
+              />
             </div>
-          </BentoCard>
+          </ProjectShowcase>
         </motion.div>
       </div>
     </section>

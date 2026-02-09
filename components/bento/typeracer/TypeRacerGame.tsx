@@ -1,8 +1,12 @@
 "use client";
 
+import { useRef, useCallback } from "react";
+import { SpeakerWaveIcon, SpeakerXMarkIcon } from "@heroicons/react/24/outline";
 import type { CharState } from "@/lib/modules/typeracer.types";
 import { GHOST_WPM, GHOST_ACCURACY, TEST_DURATION } from "@/lib/utils/typeracer.constants";
 import Link from "next/link";
+
+const KEYPRESS_SOUND = "/keypress.mp3";
 
 export interface TypeRacerGameProps {
   passage: string;
@@ -23,6 +27,8 @@ export interface TypeRacerGameProps {
   ghostCaretRef: React.RefObject<HTMLDivElement | null>;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   onPaste: (e: React.ClipboardEvent) => void;
+  muted: boolean;
+  setMuted: (v: boolean) => void;
 }
 
 export default function TypeRacerGame({
@@ -44,7 +50,71 @@ export default function TypeRacerGame({
   ghostCaretRef,
   onKeyDown,
   onPaste,
+  muted,
+  setMuted,
 }: TypeRacerGameProps) {
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const decodePromiseRef = useRef<Promise<AudioBuffer> | null>(null);
+
+  const getContextAndBuffer = useCallback((): Promise<{
+    context: AudioContext;
+    buffer: AudioBuffer;
+  }> => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new AudioContext();
+    }
+    const context = audioContextRef.current;
+
+    if (!decodePromiseRef.current) {
+      decodePromiseRef.current = fetch(KEYPRESS_SOUND)
+        .then((r) => r.arrayBuffer())
+        .then((ab) => context.decodeAudioData(ab));
+    }
+
+    return decodePromiseRef.current.then((buffer) => ({
+      context,
+      buffer,
+    }));
+  }, []);
+
+  const playKeypressSound = useCallback(() => {
+    getContextAndBuffer().then(({ context, buffer }) => {
+      const source = context.createBufferSource();
+      source.buffer = buffer;
+      const gain = context.createGain();
+      source.connect(gain);
+      gain.connect(context.destination);
+
+      const now = context.currentTime;
+      const duration = buffer.duration;
+      const fadeIn = 0.015;
+      const fadeOut = 0.04;
+
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(1, now + fadeIn);
+      gain.gain.setValueAtTime(1, now + Math.max(fadeIn, duration - fadeOut));
+      gain.gain.linearRampToValueAtTime(0, now + duration);
+
+      source.start(0);
+      source.onended = () => {
+        source.disconnect();
+        gain.disconnect();
+      };
+    }).catch(() => {});
+  }, [getContextAndBuffer]);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      const isCharacterKey =
+        e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+      if (isCharacterKey && !muted) {
+        playKeypressSound();
+      }
+      onKeyDown(e);
+    },
+    [onKeyDown, playKeypressSound, muted]
+  );
+
   return (
     <div
       className="cursor-text"
@@ -160,7 +230,7 @@ export default function TypeRacerGame({
           type="text"
           value=""
           onChange={() => { }}
-          onKeyDown={onKeyDown}
+          onKeyDown={handleKeyDown}
           onPaste={onPaste}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
@@ -182,6 +252,20 @@ export default function TypeRacerGame({
           enter
         </kbd>
         <span className="ml-1 text-zinc-600">- restart test</span>
+        <span className="mx-1.5 text-zinc-700">·</span>
+        <button
+          type="button"
+          onClick={() => setMuted(!muted)}
+          className="flex items-center gap-1 rounded border border-zinc-700/50 bg-zinc-800/50 px-1.5 py-0.5 text-zinc-500 transition-colors hover:bg-zinc-700/50 hover:text-zinc-400"
+          aria-label={muted ? "Unmute keypress sound" : "Mute keypress sound"}
+        >
+          {muted ? (
+            <SpeakerXMarkIcon className="h-3.5 w-3.5" />
+          ) : (
+            <SpeakerWaveIcon className="h-3.5 w-3.5" />
+          )}
+          <span className="text-[0.65rem]">{muted ? "Unmute" : "Mute"}</span>
+        </button>
       </div>
     </div>
   );

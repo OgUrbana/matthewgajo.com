@@ -1,8 +1,27 @@
+import { cn } from '@/lib/utils';
+import BrowserToolbar from './BrowserToolbar';
+
+const SCREEN_X = 110;
+const SCREEN_Y = 11;
+const SCREEN_W = 668;
+const SCREEN_H = 445;
+const TOOLBAR_ORIGINAL_W = 1440;
+const TOOLBAR_ORIGINAL_H = 52;
+const TOOLBAR_SCALE = SCREEN_W / TOOLBAR_ORIGINAL_W;
+const TOOLBAR_HEIGHT = TOOLBAR_ORIGINAL_H * TOOLBAR_SCALE;
+
 interface MacbookProps {
   image: string;
+  className?: string;
+  /** "cover" fills the screen (crop); "contain" fits the whole image inside (letterbox). Default cover. */
+  imageFit?: "cover" | "contain";
+  /** Browser toolbar above the image: "dark" | "light". Omit to hide. */
+  toolbarVariant?: "dark" | "light";
+  /** URL shown in the toolbar next to the lock icon (e.g. "hipnode.com") */
+  url?: string;
 }
 
-export default function Macbook({ image }: MacbookProps) {
+export default function Macbook({ className, image, imageFit = "cover", toolbarVariant = "dark", url }: MacbookProps) {
   return (
     <svg
       width="888"
@@ -11,7 +30,7 @@ export default function Macbook({ image }: MacbookProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      className="w-full h-auto"
+      className={cn("w-full h-auto", className)}
     >
       <defs>
         <filter
@@ -191,10 +210,7 @@ export default function Macbook({ image }: MacbookProps) {
           width="669"
           height="445"
         >
-          <path
-            d="M110 18.489C110 14.3529 113.343 11 117.467 11H406.323C407.448 11 408.36 11.9144 408.36 13.0425V19.8506C408.36 21.7307 409.879 23.2547 411.754 23.2547H476.246C478.12 23.2547 479.64 21.7307 479.64 19.8506V13.0425C479.64 11.9144 480.552 11 481.677 11H770.533C774.657 11 778 14.3529 778 18.489C778 160.326 778 314.163 778 456H110C109.995 314.163 110 160.326 110 18.489Z"
-            fill="white"
-          />
+          <rect x="110" y="11" width="668" height="445" fill="white" />
         </mask>
       </defs>
       <g filter="url(#filter0_f_87_100)">
@@ -274,13 +290,20 @@ export default function Macbook({ image }: MacbookProps) {
         fill="black"
       />
       <g mask="url(#mask0_87_100)">
+        {toolbarVariant && (
+          <g transform={`translate(${SCREEN_X}, ${SCREEN_Y}) scale(${TOOLBAR_SCALE})`}>
+            <BrowserToolbar idPrefix="macbook-toolbar" variant={toolbarVariant} url={url} />
+          </g>
+        )}
         <image
-          x="110"
-          y="11"
-          width="668"
-          height="445"
+          x={SCREEN_X}
+          y={SCREEN_Y + (toolbarVariant ? TOOLBAR_HEIGHT : 0)}
+          width={SCREEN_W}
+          height={SCREEN_H - (toolbarVariant ? TOOLBAR_HEIGHT : 0)}
           href={image}
-          preserveAspectRatio="xMidYMid slice"
+          preserveAspectRatio={
+            imageFit === "contain" ? "xMidYMin meet" : "xMidYMid slice"
+          }
         />
       </g>
       <rect x="99" y="463" width="690" height="15" fill="#0F0F14" />

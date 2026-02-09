@@ -37,6 +37,7 @@ export default function TypeRacerPopup({
   const [isFocused, setIsFocused] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
   const [textOffset, setTextOffset] = useState(0);
+  const [muted, setMuted] = useState(true);
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -540,6 +541,8 @@ export default function TypeRacerPopup({
             ghostCaretRef={ghostCaretRef}
             onKeyDown={handleKeyDown}
             onPaste={handlePaste}
+            muted={muted}
+            setMuted={setMuted}
           />
         )}
 
