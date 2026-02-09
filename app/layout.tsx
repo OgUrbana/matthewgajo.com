@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://matthewgajo.com'),
   title: "Matthew Gajo - Software Engineer",
   description:
-    "Builder at heart — constantly learning, solving, and shipping meaningful solutions.",
+    "Dedicated problem-solver — constantly learning, solving, and shipping meaningful solutions.",
   openGraph: {
     images: ["/Hero.png"],
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: 'Matthew Gajo - Software Engineer',
     creator: '@matthewgajo',
     description:
-      "Builder at heart — constantly learning, solving, and shipping meaningful solutions.",
+      "Dedicated problem-solver — constantly learning, solving, and shipping meaningful solutions.",
     card: "summary_large_image",
     images: ["https://matthewgajo.com/Hero.png"],
   },

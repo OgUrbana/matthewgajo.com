@@ -7,7 +7,7 @@ import DebloatPreview from './projects/DebloatPreview';
 
 export default function Projects() {
   return (
-    <section className="flex flex-col gap-8 mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-16">
+    <section id="projects" className="flex flex-col gap-8 mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-16">
       <div className="flex items-center gap-2 font-roboto">
         <span className="text-lg font-black text-text-muted">~/</span>
         <h2 className="text-3xl font-bold tracking-wide">PROJECTS</h2>
