@@ -1,6 +1,6 @@
 ## matthewgajo.com
 
-A personal websitew showcasing me and my work. Check out the live website [here](https://www.matthewgajo.com).
+A personal website showcasing me and my work. Check out the live website [here](https://www.matthewgajo.com).
 
 ### Info
 
