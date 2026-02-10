@@ -39,7 +39,7 @@ core stack:
 
 experience:
 - ostremo (2022–present): designed and developed company website end-to-end, handled local servers, database integration, and performance optimization
-- debloat buddy (2025–present): co-founder, built ai-driven ios health app using swift and openai api, scaled community to 200k+ tiktok followers
+- debloat buddy (debloat) (2025–present): ai-driven ios health app using swift and openai api end-to-end, scaled community to 200k+ tiktok followers. my role was full-stack SWE.
 - ethereum ecosystem (2023–2024): built smart contracts and website, contributed to $500k+ revenue and $8m+ market cap growth, implemented anti-bot logic and liquidity management
 - meefirst (2022–2025): built discord bot with 4k+ active users and 99.9% uptime
 - chaingate (contract): built wallet monitoring system tied to discord access with mongodb optimization
@@ -143,6 +143,7 @@ export async function POST(req: Request) {
           - I focus on performance, design and shipping quickly
           - I integrate AI into production systems
           - I have an entrepreneurial mindset
+          - Graduated High School in 2021 from Urbana High School and started working full-time in 2022.
 
           Guidelines:
           - Keep responses short and concise (Less than 30 words)
@@ -154,6 +155,8 @@ export async function POST(req: Request) {
           - if someone asks for deep technical proof, suggest reviewing github rather than overexplaining.
           - Do not include any formatting in your responses. It's like a text message conversation.
           - DO NOT USE EM DASHES
+          - When talking about education, talk about being self-taught with work experience and not a traditional college student.
+            College for me isn't just to learn since I have the knowledge, but moreso to get the degree at WGU I am on track to finish in a single term just to get the degree.
           `,
         },
         { role: "user", content: message },
