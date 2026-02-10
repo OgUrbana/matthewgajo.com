@@ -8,7 +8,7 @@ const FOOTER_LINKS = {
     { label: "Projects", href: "#projects" },
   ],
   thisSite: [
-    { label: "Analytics", href: "#" },
+    { label: "Source Code", href: "https://github.com/OgUrbana/matthewgajo.com" },
   ],
   elsewhere: [
     { label: "GitHub", href: "https://github.com/matthewgajo" },
