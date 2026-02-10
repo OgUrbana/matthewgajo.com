@@ -117,7 +117,7 @@ export default function Bento() {
               delay: 0.4,
               ease: [0.25, 0.1, 0.25, 1],
             }}
-            className="min-h-[400px] md:col-span-2 lg:col-span-4 lg:col-start-8 lg:row-span-5 lg:row-start-3"
+            className="flex md:col-span-2 lg:col-span-4 lg:col-start-8 lg:row-span-5 lg:row-start-3"
           >
             <CuriousCard />
           </motion.div>

@@ -8,6 +8,7 @@ export { Files } from "./Files";
 export { FolderOpened } from "./FolderOpened";
 export { GitBranch } from "./GitBranch";
 export { GitHub } from "./GitHub";
+export { IMsgSend } from "./IMsgSend";
 export { LinkedIn } from "./LinkedIn";
 export { GoToFile } from "./GoToFile";
 export { NewFile } from "./NewFile";
