@@ -133,6 +133,7 @@ export async function POST(req: Request) {
           links:
           - github: https://github.com/ogUrbana
           - resume: /Resume.pdf
+          - Portfolio source code: https://github.com/OgUrbana/matthewgajo.com
 
           Tone:
           - Friendly
