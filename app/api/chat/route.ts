@@ -44,6 +44,13 @@ experience:
 - meefirst (2022–2025): built discord bot with 4k+ active users and 99.9% uptime
 - chaingate (contract): built wallet monitoring system tied to discord access with mongodb optimization
 
+debloat:
+- AI-Driven IOS Health app using swift and openai api.
+- it is a food scanner and gut health tracker app that uses AI to analyze the food and provide insights.
+- Ability to scan food and get insights on the gut, skin and mood health.
+- Its able to track symptoms and provide insights on the health of the user.
+- It can track food triggers
+
 projects:
 - echo vision: cross-platform real-time transcription overlay focused on accessibility
 
