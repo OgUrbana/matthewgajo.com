@@ -107,7 +107,7 @@ export default function Footer() {
             <Mail className="block size-5 shrink-0" style={{ transform: "translateZ(0)" }} />
           </Link>
         </div>
-        <div className="text-xs text-text-muted">© 2025 Matthew Gajo. All rights reserved.</div>
+        <div className="text-xs text-text-muted">© 2026 Matthew Gajo. All rights reserved.</div>
       </div>
     </footer>
   );
