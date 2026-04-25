@@ -89,6 +89,16 @@ body {
   opacity: 1;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .card.twitter-mid-bento {
+    transition-duration: 0.01ms;
+  }
+
+  .mid-tweets-fill {
+    transition-duration: 0.01ms;
+  }
+}
+
 .card {
   background-color: transparent;
   border: 2px solid var(--color-bento-border);
@@ -143,6 +153,64 @@ body {
   padding: 1.75rem;
   position: relative;
   z-index: 2;
+}
+
+/*
+ * Twitter card: paint the face on the OUTER .card (same box as the 2px border).
+ * A separate inner .card-content background caused anti-alias “black wedges”
+ * between border-radius and border on dark pages.
+ */
+.card.twitter-mid-bento {
+  background: var(--color-bento-bg);
+  transition:
+    border-color 0.45s ease,
+    background 0.55s ease;
+}
+
+.card.twitter-mid-bento > .card-content {
+  background: transparent;
+}
+
+.card.twitter-mid-bento:has(.mid-tweets-btn:hover),
+.card.twitter-mid-bento:has(.mid-tweets-btn:focus-visible),
+.card.twitter-mid-bento:has(.mid-tweets-btn:active),
+.card.twitter-mid-bento:has(.mid-tweets-btn:focus-within) {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-bento-bg) 28%, #0c4a6e 72%),
+    color-mix(in srgb, var(--color-bento-bg) 42%, #0369a1 58%)
+  );
+  border-color: color-mix(in srgb, var(--color-bento-border) 35%, #0ea5e9 65%);
+}
+
+/* Twitter button: wavy liquid layer (scaleY reveal — not a solid full-pill fill) */
+.mid-tweets-fill {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border-radius: inherit;
+  transform: scaleY(0) translateZ(0);
+  transform-origin: top center;
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.48, 1);
+  backface-visibility: hidden;
+}
+
+.mid-tweets-btn:hover .mid-tweets-fill,
+.mid-tweets-btn:focus-visible .mid-tweets-fill,
+.mid-tweets-btn:focus-within .mid-tweets-fill,
+.mid-tweets-btn:active .mid-tweets-fill {
+  transform: scaleY(1);
+}
+
+.mid-tweets-btn:hover .mid-tweets-pill,
+.mid-tweets-btn:focus-visible .mid-tweets-pill,
+.mid-tweets-btn:focus-within .mid-tweets-pill,
+.mid-tweets-btn:active .mid-tweets-pill {
+  border-color: rgb(14 165 233 / 0.5);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.2);
 }
 
 :root {
