@@ -21,7 +21,7 @@ const NAV_ITEMS = [
     href: "mailto:matthew.gajo@gmail.com",
     Icon: ChatBubbleOvalLeftEllipsisIcon,
   },
-  { label: "Resume", href: "/resume", Icon: DocumentTextIcon },
+  { label: "Resume", href: "/resume.pdf", Icon: DocumentTextIcon },
   {
     label: "Source",
     href: "https://github.com/OgUrbana/matthewgajo.com",
@@ -64,7 +64,7 @@ export default function BottomNav() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 4 }}
                   transition={{ duration: 0.15 }}
-                  className="block whitespace-nowrap rounded-full bg-zinc-800/90 border border-zinc-700/60 px-3 py-1 text-xs font-medium text-zinc-200 backdrop-blur-sm shadow-lg"
+                  className="block whitespace-nowrap rounded-full bg-bento-bg border-2 border-bento-border px-3 py-1 text-xs font-medium text-zinc-200 shadow-lg"
                 >
                   {hoveredLabel}
                 </motion.span>
@@ -74,7 +74,7 @@ export default function BottomNav() {
         </AnimatePresence>
 
         {/* Dock */}
-        <div className="flex items-center gap-1 rounded-full bg-zinc-900/80 border border-zinc-800/60 px-4 py-3 backdrop-blur-md shadow-2xl">
+        <div className="flex items-center gap-1 rounded-full bg-bento-bg border-2 border-bento-border px-4 py-3 shadow-2xl">
           {NAV_ITEMS.map(({ label, href, Icon }) => (
             <Link
               key={label}
@@ -82,7 +82,7 @@ export default function BottomNav() {
               target={href.startsWith("http") || href.startsWith("mailto") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               onMouseEnter={() => setHoveredLabel(label)}
-              className="flex items-center justify-center size-10 rounded-full text-zinc-400 transition-colors duration-150 hover:text-zinc-100 hover:bg-zinc-800/60"
+              className="flex items-center justify-center size-10 rounded-full text-text-muted transition-colors duration-200 ease-out hover:text-emerald-400"
               aria-label={label}
             >
               <Icon className="size-5" />
