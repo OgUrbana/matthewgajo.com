@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Montserrat, Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import WipNotification from "@/components/WipNotification";
+import BottomNav from "@/components/BottomNav";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -60,6 +61,7 @@ export default function RootLayout({
         className={`${montserrat.variable} ${inter.variable} ${roboto.variable} ${geistSans.variable} ${geistMono.variable} antialiased font-montserrat`}
       >
         {children}
+        <BottomNav />
         <WipNotification />
       </body>
     </html>
